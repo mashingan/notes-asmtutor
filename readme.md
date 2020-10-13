@@ -44,3 +44,4 @@ fasmSite: https://flatassembler.net
 2. Lesson 02: Adding the proper exit from Lesson 01.
 3. Lesson 03: Calculating the length of message during runtime.
 4. Lesson 04: Introducing subroutine
+5. Lesson 05: Including external file
