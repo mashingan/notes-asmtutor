@@ -52,3 +52,4 @@ fasmSite: https://flatassembler.net
 10. Lesson 10: Counting and printing number to console.
 11. Lesson 11: Printing integer more than 10 to console.
 12. Lesson 12: Adding unsigned integer.
+13. Lesson 13: Subtracting unsigned integer.
