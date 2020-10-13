@@ -56,3 +56,4 @@ fasmSite: https://flatassembler.net
 14. Lesson 14: Multiplying unsigned integer.
 15. Lesson 15: Dividing unsigned integer.
 16. Lesson 16: Calculating command arguments.
+17. Lesson 17: Namespace local label.
