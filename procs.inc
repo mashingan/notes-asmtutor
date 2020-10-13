@@ -55,10 +55,18 @@ exponent:
 ;parseInt:
 
 iprint:
+    push    eax ecx edx esi
+    cmp     eax, 0
+    jg      @f
+    mov     edx, eax
+    mov     eax, '-'
     push    eax
-    push    ecx
-    push    edx
-    push    esi
+    mov     eax, esp
+    call    sprint
+    pop     eax
+    mov     eax, edx
+    neg     eax
+@@:
     mov     ecx, 0
 @@:
     inc     ecx
@@ -77,10 +85,7 @@ iprint:
     cmp     ecx, 0
     jnz     @b
 
-    pop     esi
-    pop     edx
-    pop     ecx
-    pop     eax
+    pop     esi edx ecx eax
     ret
 
 iprintLF:
@@ -92,4 +97,49 @@ iprintLF:
     call    sprint
     pop     eax
     pop     eax
+    ret
+
+true = 1
+false = 0
+atoi:
+    push    ebx ecx edx esi
+    mov     esi, eax
+    mov     eax, 0
+    mov     ecx, 0
+    mov     ebx, 0
+    mov     edx, 0
+    mov     dl, false
+    cmp     byte [esi], '-'
+    jne     @f
+    inc     esi
+    mov     dl, true
+@@:
+    push    edx
+@@:
+    xor     ebx, ebx
+    mov     bl, byte [esi+ecx]
+    cmp     bl, '0'
+    jl      @f
+    cmp     bl, '9'
+    jg      @f
+
+    sub     bl, '0'
+    add     eax, ebx
+    mov     ebx, 10
+    mul     ebx
+    inc     ecx
+    jmp     @b
+@@:
+    cmp     ecx, 0
+    je      @f
+    mov     ebx, 10
+    div     ebx
+@@:
+    pop     edx
+    cmp     dl, true
+    jne     @f
+    neg     eax
+
+@@:
+    pop     esi edx ecx ebx
     ret

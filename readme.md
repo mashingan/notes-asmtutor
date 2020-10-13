@@ -55,3 +55,4 @@ fasmSite: https://flatassembler.net
 13. Lesson 13: Subtracting unsigned integer.
 14. Lesson 14: Multiplying unsigned integer.
 15. Lesson 15: Dividing unsigned integer.
+16. Lesson 16: Calculating command arguments.
