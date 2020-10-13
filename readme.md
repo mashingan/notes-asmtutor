@@ -43,5 +43,6 @@ fasmSite: https://flatassembler.net
 1. Lesson 01: Printing the constant string to the stdout.
 2. Lesson 02: Adding the proper exit from Lesson 01.
 3. Lesson 03: Calculating the length of message during runtime.
-4. Lesson 04: Introducing subroutine
-5. Lesson 05: Including external file
+4. Lesson 04: Introducing subroutine.
+5. Lesson 05: Including external file.
+6. Lesson 06: Ending the string with null-terminating byte.
