@@ -46,3 +46,4 @@ fasmSite: https://flatassembler.net
 4. Lesson 04: Introducing subroutine.
 5. Lesson 05: Including external file.
 6. Lesson 06: Ending the string with null-terminating byte.
+7. Lesson 07: Using Extended Stack Pointer (ESP) to print the `0Ah` byte.
