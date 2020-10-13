@@ -1,5 +1,12 @@
 # Fasm Adapted Lessons from asmtutor
 
+## Table of Contents
+
+1. [Intro](#intro)
+2. [Compile](#compile)
+3. [Lesson Architecture](#lesson-architecture)
+4. [Lessons' content](#lessons-content)
+
 ## Intro
 
 The source of lesson taken from [AsmTutor][asmtutor].
@@ -30,3 +37,9 @@ be run no problem.
 
 asmtutor: https://asmtutor.com
 fasmSite: https://flatassembler.net
+
+## Lessons' content
+
+1. Lesson 01: Printing the constant string to the stdout.
+2. Lesson 02: Adding the proper exit from Lesson 01.
+3. Lesson 03: Calculating the length of message during runtime.
