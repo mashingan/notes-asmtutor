@@ -50,3 +50,4 @@ fasmSite: https://flatassembler.net
 8. Lesson 08: Command line arguments.
 9. Lesson 09: Reading user input
 10. Lesson 10: Counting and printing number to console.
+11. Lesson 11: Printing integer more than 10 to console.

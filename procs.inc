@@ -53,3 +53,43 @@ exponent:
     ret
 
 ;parseInt:
+
+iprint:
+    push    eax
+    push    ecx
+    push    edx
+    push    esi
+    mov     ecx, 0
+@@:
+    inc     ecx
+    mov     edx, 0
+    mov     esi, 10
+    idiv    esi
+    add     edx, '0'
+    push    edx
+    cmp     eax, 0
+    jnz     @b
+@@:
+    dec     ecx
+    mov     eax, esp
+    call    sprint
+    pop     eax
+    cmp     ecx, 0
+    jnz     @b
+
+    pop     esi
+    pop     edx
+    pop     ecx
+    pop     eax
+    ret
+
+iprintLF:
+    call    iprint
+    push    eax
+    mov     eax, 0Ah
+    push    eax
+    mov     eax, esp
+    call    sprint
+    pop     eax
+    pop     eax
+    ret
