@@ -3,7 +3,7 @@ format ELF executable 3
 entry start
 
 segment readable writeable
-msg     db 'Hello the new brave isekai!', 0Ah
+msg     db 'Hello the new brave isekai!', 0Ah, 0
 
 segment readable executable
 start:
