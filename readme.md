@@ -49,3 +49,4 @@ fasmSite: https://flatassembler.net
 7. Lesson 07: Using Extended Stack Pointer (ESP) to print the `0Ah` byte.
 8. Lesson 08: Command line arguments.
 9. Lesson 09: Reading user input
+10. Lesson 10: Counting and printing number to console.
