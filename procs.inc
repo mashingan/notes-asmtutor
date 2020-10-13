@@ -41,3 +41,15 @@ sprintLF:
     pop     eax
     pop     eax
     ret
+
+exponent:
+@@:
+    cmp     ebx, 0
+    je      @f
+    mul     eax
+    dec     ebx
+    jmp     @b
+@@:
+    ret
+
+;parseInt:
