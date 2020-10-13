@@ -10,6 +10,10 @@ segment readable executable
 start:
 mov     eax, msg
 call    sprint
+
+mov     eax, msg
+call    sprint
+
 call    quitProgram
 
 include 'lesson05.inc'
