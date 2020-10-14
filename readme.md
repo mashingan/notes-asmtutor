@@ -72,3 +72,4 @@ be run no problem.
 30. Lesson 30: Binding socket.
 31. Lesson 31: Listening socket.
 32. Lesson 32: Accepting socket.
+33. Lesson 33: Reading socket.
