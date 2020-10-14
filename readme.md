@@ -73,3 +73,4 @@ be run no problem.
 31. Lesson 31: Listening socket.
 32. Lesson 32: Accepting socket.
 33. Lesson 33: Reading socket.
+34. Lesson 34: Writing socket, responding HTTP.
