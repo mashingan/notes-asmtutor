@@ -68,4 +68,5 @@ be run no problem.
 26. Lesson 26: Closing a file.
 27. Lesson 27: Seeking a file.
 28. Lesson 28: Deleting a file.
-29. Lesson 30: Creating socket.
+29. Lesson 29: Creating socket.
+30. Lesson 30: Binding socket.
