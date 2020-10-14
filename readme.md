@@ -74,5 +74,5 @@ run no problem.
 35. Lesson 35: Closing the socket.
 36. Lesson 36: Fetching HTML page.
 
-asmtutor: https://asmtutor.com
-fasmSite: https://flatassembler.net
+[asmtutor]: https://asmtutor.com
+[fasmSite]: https://flatassembler.net
