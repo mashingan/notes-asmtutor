@@ -65,3 +65,4 @@ fasmSite: https://flatassembler.net
 23. Lesson 23: Writing a file.
 24. Lesson 24: Opening a file.
 25. Lesson 25: Reading a file.
+26. Lesson 26: Closing a file.
