@@ -62,3 +62,4 @@ fasmSite: https://flatassembler.net
 20. Lesson 20: Forking child process.
 21. Lesson 21: Getting Unix epoch timestamp.
 22. Lesson 22: Creating a file.
+23. Lesson 23: Writing a file.
