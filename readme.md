@@ -74,3 +74,4 @@ be run no problem.
 32. Lesson 32: Accepting socket.
 33. Lesson 33: Reading socket.
 34. Lesson 34: Writing socket, responding HTTP.
+35. Lesson 35: Closing the socket.
