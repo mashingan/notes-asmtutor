@@ -15,9 +15,6 @@ The assembly used is [Flat Assembler (FASM)][fasmSite]
 
 The original lesson is in NASM but this lesson files are adapted to FASM.
 
-asmtutor: https://asmtutor.com
-fasmSite: https://flatassembler.net
-
 ## Compile
 
 Using FASM is fairly straightforward. Simply invoking the `fasm file`
@@ -35,8 +32,8 @@ segmentation fault
 
 ## Lesson Architecture
 
-This lessons are using the 32-bit arch but with decent Linux it would
-be run no problem.
+This lessons are using the 32-bit arch but with decent 64-bit Linux installation should
+run no problem.
 
 ## Lessons' content
 
@@ -76,3 +73,6 @@ be run no problem.
 34. Lesson 34: Writing socket, responding HTTP.
 35. Lesson 35: Closing the socket.
 36. Lesson 36: Fetching HTML page.
+
+asmtutor: https://asmtutor.com
+fasmSite: https://flatassembler.net
