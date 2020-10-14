@@ -35,6 +35,19 @@ sprint:
     pop     rbx
     ret
 
+sprintLF:
+    push    rbx rdx
+    mov     rdx, rax
+    call    sprint
+    mov     rax, 0ah
+    push    rax
+    mov     rax, rsp
+    mov     rbx, 1
+    call    snprint
+    pop     rax
+    pop     rdx rbx
+    ret
+
 quitProgram:
     xorc    rdi
     mov     rax, 60
