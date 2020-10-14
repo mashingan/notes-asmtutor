@@ -58,3 +58,4 @@ fasmSite: https://flatassembler.net
 16. Lesson 16: Calculating command arguments.
 17. Lesson 17: Namespace local label.
 18. Lesson 18: Fizz Buzz division.
+19. Lesson 19: Executing external command.
