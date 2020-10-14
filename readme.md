@@ -15,6 +15,9 @@ The assembly used is [Flat Assembler (FASM)][fasmSite]
 
 The original lesson is in NASM but this lesson files are adapted to FASM.
 
+asmtutor: https://asmtutor.com
+fasmSite: https://flatassembler.net
+
 ## Compile
 
 Using FASM is fairly straightforward. Simply invoking the `fasm file`
@@ -34,9 +37,6 @@ segmentation fault
 
 This lessons are using the 32-bit arch but with decent Linux it would
 be run no problem.
-
-asmtutor: https://asmtutor.com
-fasmSite: https://flatassembler.net
 
 ## Lessons' content
 
@@ -68,3 +68,4 @@ fasmSite: https://flatassembler.net
 26. Lesson 26: Closing a file.
 27. Lesson 27: Seeking a file.
 28. Lesson 28: Deleting a file.
+29. Lesson 30: Creating socket.

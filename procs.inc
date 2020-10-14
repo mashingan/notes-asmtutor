@@ -143,3 +143,41 @@ atoi:
 @@:
     pop     esi edx ecx ebx
     ret
+
+; ref: https://gist.github.com/DGivney/7196bd7a9f21a12c9397bdcf9ae040d2
+;socket:
+;    push    ecx ebx
+;    push    byte 6      ; IPPROTOC_TCP
+;    push    byte 1      ; SOCK_STREAM
+;    push    byte 2      ; PF_INET
+;    mov     ecx, esp    ; ecx as args
+;    mov     ebx, 1      ; subroutine SOCKET opcode
+;    mov     eax, 102    ; SYS_SOCKETCALL opcode 102
+;    int     80h
+;    pop     ebx ecx
+;    ret
+;
+;bind:
+;    push    ebx ecx edi
+;    mov     edi, eax    ; SYS_SOCKETCALL value to edi -1 for error
+;    push    dword 0x00  ; stack IP ADDRESS
+;    push    word 0x2923 ; move  9001 dec onto stack PORT
+;    push    word 2      ; move 2 dec onto stack AF_INET
+;    mov     ecx, esp
+;    push    byte 16     ; move 16 dec onto stack (arguments length)
+;    push    ecx         ; push adress of arguments onto stack
+;    push    edi         ; push the file descriptor onto stack
+;    mov     ecx, esp    ; move address of arguments into ecx
+;    mov     ebx, 2      ; subroutine BIND
+;    mov     eax, 102    ; SYS_SOCKETCALL
+;    int     80h
+;    pop     edi ecx ebx
+;    ret
+;
+;listen:
+;    push    ebx ecx edi
+;    push    byte 1
+;    mov     ecx, esp
+;    mov     ebx, 4
+;    mov     eax, 102
+;    int     80h
