@@ -68,7 +68,7 @@ both of register are implicitly used as return address and flags subsequently.
 24. Lesson 24: Opening a file.
 25. Lesson 25: Reading a file.
 26. Lesson 26: Closing a file.
-27. Lesson 27: Seeking a file.
+27. Lesson 27: Seeking a file. Make sure we have the writing permission when opening the file.
 28. Lesson 28: Deleting a file.
 29. Lesson 29: Creating socket.
 30. Lesson 30: Binding socket.
