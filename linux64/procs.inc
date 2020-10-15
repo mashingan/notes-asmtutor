@@ -3,16 +3,16 @@ macro xorc reg {
 }
 
 slen:
-    push    rcx
-    mov     rcx, rax
+    push    rbx
+    mov     rbx, rax
 @@:
     cmp     byte [rax], 0
     jz      @f
     inc     rax
     jmp     @b
 @@:
-    sub     rax, rcx
-    pop     rcx
+    sub     rax, rbx
+    pop     rbx
     ret
 
 snprint:
@@ -36,9 +36,33 @@ sprint:
     ret
 
 sprintLF:
+    push    rbx
+    call    sprint
+    mov     rax, 0ah
+    push    rax
+    mov     rax, rsp
+    mov     rbx, 1
+    call    snprint
+    pop     rax
+    pop     rbx
+    ret
+
+i1print:
     push    rbx rdx
     mov     rdx, rax
-    call    sprint
+    add     rdx, '0'
+    push    rdx
+    mov     rax, rsp
+    mov     rbx, 1
+    call    snprint
+    pop     rax
+    pop     rdx rbx
+    ret
+
+i1printLF:
+    push    rbx rdx
+    mov     rdx, rax
+    call    i1print
     mov     rax, 0ah
     push    rax
     mov     rax, rsp
