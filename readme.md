@@ -32,9 +32,10 @@ segmentation fault
 
 ## Lesson Architecture
 
-Each Linux architecture notes lesson are organized to each folder.  
-Linux32 as Linux 32-bit and Linux64 as Linux 64-bit.
-
+The original lessons are giving example using `int 80h` for Linux32 but
+this notes is adapted to both Linux32 and Linux64.  
+For any decent linux, the notes examples for Linux32 are still able to
+be compiled and ran even the host machine is Linux64.
 
 Avoid using `rcx` and `r11` when calling `syscall` for Linux64 because
 both of register are implicitly used as return address and flags subsequently.
