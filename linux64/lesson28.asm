@@ -1,4 +1,4 @@
-format ELF executable 3
+format ELF64 executable 3
 entry start
 
 include 'procs.inc'
@@ -8,8 +8,8 @@ filename    db  'filecreate.txt', 0h
 
 segment readable executable
 start:
-    mov     ebx, filename
-    mov     eax, 10         ; SYS_UNLINK
-    int     80h
+    mov     rdi, filename
+    mov     rax, 87         ; SYS_UNLINK
+    syscall
 
     call    quitProgram
