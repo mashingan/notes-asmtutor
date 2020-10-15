@@ -77,10 +77,16 @@ iprint:
     xorc    rbx
     cmp     rax, 0
     jge     @f
-    mov     rdx, '-'
-    push    rdx
+    mov     rdx, rax
+    mov     rax, '-'
+    push    rax
+    mov     rbx, 1
+    mov     rax, rsp
+    call    snprint
+    pop     rax     ; discard it
+    mov     rax, rdx
     neg     rax
-    inc     rbx
+    xorc    rbx
 @@:
     inc     rbx
     mov     rdx, 0
@@ -113,6 +119,50 @@ iprintLF:
     call    snprint
     pop     rax
     pop     rbx
+    ret
+
+false = 0
+true = 1
+atoi:
+    push    rbx rcx rdx rdi rsi
+    mov     rsi, rax
+    xorc    rax
+    xorc    rbx
+    xorc    rcx
+    xorc    rdx
+    xorc    rdi
+    mov     rdi, 10
+    mov     dl, false
+    cmp     byte [rsi], '-'
+    jne     @f
+    mov     dl, true
+    inc     rsi
+@@:
+    push    rdx
+@@:
+    xorc    rdx
+    mov     dl, byte [rsi+rbx]
+    cmp     dl, '0'
+    jl      @f
+    cmp     dl, '9'
+    jg      @f
+    inc     rbx
+    sub     dl, '0'
+    add     rax, rdx
+    ;mov     rdi, 10
+    mul     rdi
+    jmp     @b
+@@:
+    cmp     rbx, 0
+    je      @f
+    div     rdi
+@@:
+    pop     rdx
+    cmp     rdx, true
+    jne     @f
+    neg     rax
+@@:
+    pop     rsi rdi rdx rcx rbx
     ret
 
 quitProgram:
