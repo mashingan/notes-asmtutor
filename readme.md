@@ -32,8 +32,13 @@ segmentation fault
 
 ## Lesson Architecture
 
-This lessons are using the 32-bit arch but with decent 64-bit Linux installation should
-run no problem.
+Each Linux architecture notes lesson are organized to each folder.  
+Linux32 as Linux 32-bit and Linux64 as Linux 64-bit.
+
+
+Avoid using `rcx` and `r11` when calling `syscall` for Linux64 because
+both of register are implicitly used as return address and flags subsequently.
+[Ref][so-answer-rcx].
 
 ## Lessons' content
 
@@ -76,3 +81,4 @@ run no problem.
 
 [asmtutor]: https://asmtutor.com
 [fasmSite]: https://flatassembler.net
+[so-answer-rcx]: https://stackoverflow.com/a/50571366
