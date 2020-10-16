@@ -4,13 +4,26 @@ entry start
 include 'procs.inc'
 
 segment readable writable
+buffer  rb  4096
+
+segment readable
 request db 'GET / HTTP/1.1', 0dh, 0ah, 'Host: 139.162.39.66:80'
+
 rept 2 {
     db  0dh, 0ah
 }
     db 0h
 request.length = $ - request
-buffer      rb  4096
+
+struc sockaddr_in family, port, addr, last {
+    .family  dw  family
+    .port    dw  port
+    .addr    dq  addr
+    .last    dq  last
+}
+
+sock    sockaddr_in 2, 0x5000, 0x4227a28b, 0
+socklen = $ - sock
 
 segment readable executable
 start:
@@ -30,14 +43,18 @@ start:
     mov     rdi, rax
 
 .connect:
-    mov     rcx, rsp
-    push    0
-    push    0x4227a28b    ; push 139.162.39.66 onto stack IP ADDRESS
-    push    word 0x5000         ; push 80 onto stack PORT
-    push    word 2   ; AF_INET
-    mov     rsi, rsp
-    sub     rcx, rsi
-    mov     rdx, rcx
+    ;mov     rcx, rsp
+    ;push    0
+    ;push    0x4227a28b    ; push 139.162.39.66 onto stack IP ADDRESS
+    ;push    word 0x5000         ; push 80 onto stack PORT
+    ;push    word 2   ; AF_INET
+    ;mov     rsi, rsp
+    ;sub     rcx, rsi
+    ;mov     rdx, rcx
+
+    mov     rsi, sock
+    mov     rdx, socklen
+
     mov     rax, 42     ; SYS_CONNECT
     syscall
 
