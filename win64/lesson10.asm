@@ -13,12 +13,12 @@ start:
     fastcall setStdout
     mov     rcx, banner
     fastcall sprintLF
-    mov     r12, 0
+    mov     rbx, 0
 @@:
-    inc     r12
-    cmp     r12, 10
+    inc     rbx
+    cmp     rbx, 10
     jg      @f
-    mov     rax, r12
+    mov     rax, rbx
     add     rax, '0'
     push    rax
     mov     rcx, rsp

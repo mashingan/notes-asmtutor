@@ -29,7 +29,10 @@ proc printString msgaddr, len
     mov     [msgaddr], rcx
     mov     [len], rdx
     push    rbx
+    push    0
+    mov     rbx, rsp
     invoke  WriteConsoleA, [stdout], [msgaddr], [len], rbx, 0
+    pop     rbx
     pop     rbx
     ret
 endp

@@ -10,12 +10,12 @@ section '.text' code readable executable
 
 start:
     fastcall setStdout
-    mov     r12, 0
+    mov     rbx, 0
 @@:
-    inc     r12
-    mov     rcx, r12
+    inc     rbx
+    mov     rcx, rbx
     fastcall iprintLF
-    cmp     r12, 10
+    cmp     rbx, 10
     jne     @b
 @@:
     fastcall quitProgram
