@@ -41,6 +41,14 @@ Avoid using `rcx` and `r11` when calling `syscall` for Linux64 because
 both of register are implicitly used as return address and flags subsequently.
 [Ref][so-answer-rcx].
 
+----
+### Win64
+For Windows 64 bit, abbreviated as Win64, the lessons are using Win32 [index][win32-api-index]
+instead of `syscall` because there's no reliable documentation available
+freely. There's some book which explains the internals, [Windows Internal Books][win-internal],
+but as mentioned before, it's not available for free. Hence we use the
+available [Windows API][win32-api-index].
+
 ## Lessons' content
 
 1. Lesson 01: Printing the constant string to the stdout.
@@ -83,3 +91,5 @@ both of register are implicitly used as return address and flags subsequently.
 [asmtutor]: https://asmtutor.com
 [fasmSite]: https://flatassembler.net
 [so-answer-rcx]: https://stackoverflow.com/a/50571366
+[win32-api-index]: https://docs.microsoft.com/en-us/windows/win32/apiindex/windows-api-list
+[win-internal]: https://docs.microsoft.com/en-us/sysinternals/resources/windows-internals
