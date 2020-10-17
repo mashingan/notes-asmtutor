@@ -127,9 +127,55 @@ proc iprintLF
     mov     ah, 0dh
     push    ax
     mov     rcx, rsp
-    mov     rdx, 1
+    mov     rdx, 2
     fastcall snprint
     pop     ax
+    ret
+endp
+
+false = 0
+true = 1
+
+proc atoi
+    push    rbx rdi rsi
+    mov     rsi, rcx
+    xor     rax, rax
+    xor     rbx, rbx
+    xor     rcx, rcx
+    xor     rdx, rdx
+    xor     rdi, rdi
+    mov     rdi, 10
+    mov     dl, false
+    cmp     byte [rsi], '-'
+    jne     @f
+    mov     dl, true
+    inc     rsi
+@@:
+    push    rdx
+@@:
+    xor     rdx, rdx
+    mov     dl, byte [rsi+rbx]
+    cmp     dl, '0'
+    jl      @f
+    cmp     dl, '9'
+    jg      @f
+    inc     rbx
+    sub     dl, '0'
+    add     rax, rdx
+    ;mov     rdi, 10
+    mul     rdi
+    jmp     @b
+@@:
+    cmp     rbx, 0
+    je      @f
+    div     rdi
+@@:
+    pop     rdx
+    cmp     rdx, true
+    jne     @f
+    neg     rax
+@@:
+    pop     rsi rdi rbx
     ret
 endp
 
