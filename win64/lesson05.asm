@@ -7,6 +7,7 @@ section '.data' data readable writeable
 msg     db  'Hello the brave to the isekai!', 0dh, 0Ah, 0
 msgf    db  'Adapt to the new environment with FASM.', 0dh, 0Ah, 0
 stdout  dq ?
+stdin   dq ?
 
 section '.text' code readable executable
 

@@ -3,6 +3,11 @@ setStdout:
     mov     [stdout], rax
     ret
 
+setStdin:
+    invoke  GetStdHandle, STD_INPUT_HANDLE
+    mov     [stdin], rax
+    ret
+
 proc strlen msgaddr
     mov     rax, rcx
 
