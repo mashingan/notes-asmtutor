@@ -13,7 +13,6 @@ hello   db  'Hello, ', 0h
 
 sinsize = 255
 sinput  rw  sinsize
-readbyte rq 1
 
 section '.text' code readable executable
 
@@ -23,16 +22,19 @@ start:
     fastcall setStdin
     mov     rcx, prompt
     fastcall sprint
-    invoke  ReadConsole, [stdin], sinput, sinsize, readbyte, 0
+    push    0
+    mov     r12, rsp
+    invoke  ReadConsole, [stdin], sinput, sinsize, r12, 0
     cmp     rax, 0
     je      .quit
 
     mov     rcx, hello
     fastcall sprint
 
-    mov     rdx, [readbyte]
+    mov     rdx, [r12]
     mov     rcx, sinput
     fastcall snprintW
+    pop     rax ; discard the readbyte
 
 .quit:
     fastcall quitProgram
