@@ -30,6 +30,32 @@ Hello world!
 segmentation fault
 ```
 
+----
+### Win64
+To compile on Windows 64 bit, will from now on called as Win64, we must put the
+`fasm.exe` available on the `PATH` global environment. Additionally, fasm needs
+the global variable `INCLUDE` to where the include folder where fasm is extracted.  
+
+For example we just put our fasm extraction on `c:\fasm`, at this stage we still
+don't have the `fasm.exe` in the `PATH` so we can add it temporarily during
+this particular cmd session.
+
+```cmd
+> set PATH=%PATH%;c:\fasm
+> set INCLUDE=c:\fasm\include
+> fasm
+flat assembler  version 1.73.24
+usage: fasm <source> [output]
+optional settings:
+ -m <limit>         set the limit in kilobytes for the available memory
+ -p <limit>         set the maximum allowed number of passes
+ -d <name>=<value>  define symbolic variable
+ -s <file>          dump symbolic information for debugging
+```
+
+If we have the output as shown above, we can use `fasm.exe` as simple as
+Linux example above.
+
 ## Lesson Architecture
 
 The original lessons are giving example using `int 80h` for Linux32 but
