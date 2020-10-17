@@ -37,5 +37,17 @@ endp
 
 snprint = printString
 
+proc sprintLF
+    fastcall sprint
+    mov     al, 0ah
+    mov     ah, 0dh
+    push    ax
+    mov     rcx, rsp
+    mov     rdx, 2
+    fastcall snprint
+    pop     ax
+    ret
+endp
+
 quitProgram:
     invoke  ExitProcess, 0
