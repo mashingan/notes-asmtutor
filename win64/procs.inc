@@ -31,9 +31,11 @@ proc sprint msgaddr
     fastcall strlen
     mov     rcx, [msgaddr]
     mov     rdx, rax
-    fastcall printString
+    fastcall snprint
     ret
 endp
+
+snprint = printString
 
 quitProgram:
     invoke  ExitProcess, 0
