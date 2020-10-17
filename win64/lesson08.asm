@@ -5,7 +5,6 @@ include 'win64w.inc'
 
 section '.data' data readable writeable
 stdout  dq ?
-cmdptr  dq ?
 
 section '.text' code readable executable
 
