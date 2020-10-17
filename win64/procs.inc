@@ -78,5 +78,57 @@ proc sprintWLF
     ret
 endp
 
+proc iprint
+    push    rbx rdi r12
+    mov     rax, rcx
+    xorc    r12
+    cmp     rax, 0
+    jge     @f
+    mov     rbx, rax
+    mov     rax, '-'
+    push    rax
+    mov     rdx, 1
+    mov     rcx, rsp
+    fastcall snprint
+    pop     rax     ; discard it
+    mov     rax, rbx
+    neg     rax
+    xorc    rbx
+@@:
+    inc     r12
+    mov     rdx, 0
+    mov     rdi, 10
+    div     rdi
+    add     rdx, '0'
+    push    rdx
+    cmp     rax, 0
+    jnz     @b
+    mov     rdx, r12
+@@:
+    dec     r12
+    mov     rcx, rsp
+    mov     rdx, 1
+    fastcall snprint
+    pop     rax
+    cmp     r12, 0
+    jg      @b
+
+    pop     r12 rdi rbx
+    ret
+    
+endp
+
+proc iprintLF
+    fastcall iprint
+    mov     al, 0ah
+    mov     ah, 0dh
+    push    ax
+    mov     rcx, rsp
+    mov     rdx, 1
+    fastcall snprint
+    pop     ax
+    ret
+endp
+
 quitProgram:
     invoke  ExitProcess, 0
