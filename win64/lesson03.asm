@@ -19,7 +19,10 @@ start:
 .finished:
     sub     rcx, rbx
     invoke  GetStdHandle, STD_OUTPUT_HANDLE
+    push    0
+    mov     rbx, rsp
     invoke  WriteConsoleA, rax, msg, rcx, rbx, 0
+    pop     rax ; discard
     invoke  ExitProcess, 0
 
 section '.idata' import data readable

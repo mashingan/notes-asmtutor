@@ -81,7 +81,7 @@ endp
 proc iprint
     push    rbx rdi r12
     mov     rax, rcx
-    xorc    r12
+    xor     r12, r12
     cmp     rax, 0
     jge     @f
     mov     rbx, rax
@@ -93,7 +93,7 @@ proc iprint
     pop     rax     ; discard it
     mov     rax, rbx
     neg     rax
-    xorc    rbx
+    xor     rbx, rbx
 @@:
     inc     r12
     mov     rdx, 0
