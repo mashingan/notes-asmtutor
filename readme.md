@@ -101,7 +101,7 @@ available [Windows API][win32-api-index].
 22. Lesson 22: Creating a file.
 23. Lesson 23: Writing a file.
 24. Lesson 24: Opening a file.
-25. Lesson 25: Reading a file.
+25. Lesson 25: Reading a file. Win64 version already available in lesson 24.
 26. Lesson 26: Closing a file.
 27. Lesson 27: Seeking a file. Make sure we have the writing permission when opening the file.
 28. Lesson 28: Deleting a file.
