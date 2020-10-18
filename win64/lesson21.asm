@@ -5,7 +5,8 @@ include 'win64w.inc'
 
 section '.data' data readable writeable
 stdout  dq  ?
-msg db  'Seconds since 1 January 1970: ', 0h
+msg     db  'Seconds since 1 January 1970: ', 0h
+milsec  db  'milliseconds: ', 0h
 
 section '.text' code readable executable
 
@@ -29,12 +30,21 @@ start:
     mov     rax, [r12]
     sub     rax, [r13]
     xor     rdx, rdx
-    mov     rdi, 10000
+    mov     rdi, 10000000
     div     rdi
+    push    rdx ; remainder
     push    rax
     mov     rcx, msg
     fastcall sprint
     pop     rcx
+    fastcall iprintLF
+    mov     rcx, milsec
+    fastcall sprint
+    pop     rax
+    xor     rdx, rdx
+    mov     rdi, 10000
+    div     rdi
+    mov     rcx, rax
     fastcall iprintLF
 .leave:
     leave
