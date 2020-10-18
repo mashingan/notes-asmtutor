@@ -69,7 +69,7 @@ proc sprintLF
     ret
 endp
 
-proc sprintWLF
+proc snprintWLF
     fastcall snprintW
     mov     al, 0ah
     mov     ah, 0dh

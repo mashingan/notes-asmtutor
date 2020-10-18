@@ -6,14 +6,9 @@ include 'win64w.inc'
 section '.data' data readable writeable
 stdout  dq  ?
 filename    TCHAR  'filecreate.txt', 0h
-failc   db  'failed to create file', 0h
-failw   db  'failed to write file: ', 0h
-writes  db  'write file success', 0h
-bom db  0xff, 0xfe, 0, 0
-bomlen = $ - bom
-content db  'H', 'e', 'l', 'l', 'o', ' '
-        dd  '異', '世', '界'
-;content db  'Hello isekai', 0h
+failc   db  'failed code: ', 0h
+writes  db  'read file success', 0h
+content rw  32
 contlen = $ - content
 
 section '.text' code readable executable
@@ -21,10 +16,10 @@ section '.text' code readable executable
 start:
     fastcall setStdout
 
-    enter   24, 0
+    enter   16, 0
     lea     r15, [rbp-8]
     invoke  CreateFile, filename,\
-            GENERIC_WRITE,\
+            GENERIC_READ,\
             0,\
             0,\
             OPEN_ALWAYS,\
@@ -33,29 +28,32 @@ start:
     mov     [r15], rax
     cmp     rax, 0
     jne     @f
-    mov     rcx, failc
-    fastcall sprintLF
-    jmp     .leave
+    jmp     .err
 @@:
-    invoke  GetLastError
-    mov     r13, rax
     lea     r14, [rbp-16]
     mov     rdi, [r15]
-    ;invoke  WriteFile, rdi, bom, bomlen, r14, 0
-    invoke  WriteFile, rdi, content, contlen, r14, 0
+    invoke  ReadFile, rdi, content, contlen, r14, 0
     cmp     rax, false
     jne     @f
-    mov     rcx, failw
+    jmp     .err
+@@:
+    mov     rcx, [r14]
+    fastcall iprintLF
+    mov     rdx, [r14]
+    mov     rcx, content
+    fastcall snprint
+.leave:
+    leave
+    fastcall quitProgram
+
+.err:
+    invoke  GetLastError
+    mov     r13, rax
+    mov     rcx, failc
     fastcall sprint
     mov     rcx, r13
     fastcall iprintLF
     jmp     .leave
-@@:
-    mov     rcx, writes
-    fastcall sprintLF
-.leave:
-    leave
-    fastcall quitProgram
 
 include 'procs.inc'
 
