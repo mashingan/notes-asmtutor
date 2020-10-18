@@ -96,7 +96,7 @@ available [Windows API][win32-api-index].
 17. Lesson 17: Namespace local label.
 18. Lesson 18: Fizz Buzz division.
 19. Lesson 19: Executing external command.
-20. Lesson 20: Forking child process.
+20. Lesson 20: Forking child process. Using `CreateThread` on Win64.
 21. Lesson 21: Getting Unix epoch timestamp.
 22. Lesson 22: Creating a file.
 23. Lesson 23: Writing a file.
