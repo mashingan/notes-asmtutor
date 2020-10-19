@@ -11,7 +11,7 @@ failw   db  'failed to write file: ', 0h
 writes  db  'write file success', 0h
 bom db  0xff, 0xfe, 0, 0
 bomlen = $ - bom
-content db  'H', 'e', 'l', 'l', 'o', ' '
+content dw  'H', 'e', 'l', 'l', 'o', ' '
         dd  '異', '世', '界'
 ;content db  'Hello isekai', 0h
 contlen = $ - content
