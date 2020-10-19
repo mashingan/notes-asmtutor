@@ -30,6 +30,32 @@ Hello world!
 segmentation fault
 ```
 
+----
+### Win64
+To compile on Windows 64 bit, will from now on called as Win64, we must put the
+`fasm.exe` available on the `PATH` global environment. Additionally, fasm needs
+the global variable `INCLUDE` to where the include folder where fasm is extracted.  
+
+For example we just put our fasm extraction on `c:\fasm`, at this stage we still
+don't have the `fasm.exe` in the `PATH` so we can add it temporarily during
+this particular cmd session.
+
+```cmd
+> set PATH=%PATH%;c:\fasm
+> set INCLUDE=c:\fasm\include
+> fasm
+flat assembler  version 1.73.24
+usage: fasm <source> [output]
+optional settings:
+ -m <limit>         set the limit in kilobytes for the available memory
+ -p <limit>         set the maximum allowed number of passes
+ -d <name>=<value>  define symbolic variable
+ -s <file>          dump symbolic information for debugging
+```
+
+If we have the output as shown above, we can use `fasm.exe` as simple as
+Linux example above.
+
 ## Lesson Architecture
 
 The original lessons are giving example using `int 80h` for Linux32 but
@@ -40,6 +66,14 @@ be compiled and ran even the host machine is Linux64.
 Avoid using `rcx` and `r11` when calling `syscall` for Linux64 because
 both of register are implicitly used as return address and flags subsequently.
 [Ref][so-answer-rcx].
+
+----
+### Win64
+For Windows 64 bit, abbreviated as Win64, the lessons are using Win32 [index][win32-api-index]
+instead of `syscall` because there's no reliable documentation available
+freely. There's some book which explains the internals, [Windows Internal Books][win-internal],
+but as mentioned before, it's not available for free. Hence we use the
+available [Windows API][win32-api-index].
 
 ## Lessons' content
 
@@ -62,12 +96,12 @@ both of register are implicitly used as return address and flags subsequently.
 17. Lesson 17: Namespace local label.
 18. Lesson 18: Fizz Buzz division.
 19. Lesson 19: Executing external command.
-20. Lesson 20: Forking child process.
+20. Lesson 20: Forking child process. Using `CreateThread` on Win64.
 21. Lesson 21: Getting Unix epoch timestamp.
 22. Lesson 22: Creating a file.
 23. Lesson 23: Writing a file.
 24. Lesson 24: Opening a file.
-25. Lesson 25: Reading a file.
+25. Lesson 25: Reading a file. Win64 version already available in lesson 24.
 26. Lesson 26: Closing a file.
 27. Lesson 27: Seeking a file. Make sure we have the writing permission when opening the file.
 28. Lesson 28: Deleting a file.
@@ -77,9 +111,11 @@ both of register are implicitly used as return address and flags subsequently.
 32. Lesson 32: Accepting socket.
 33. Lesson 33: Reading socket.
 34. Lesson 34: Writing socket, responding HTTP.
-35. Lesson 35: Closing the socket.
+35. Lesson 35: Closing the socket. Win64 version already available since lesson 32.
 36. Lesson 36: Fetching HTML page.
 
 [asmtutor]: https://asmtutor.com
 [fasmSite]: https://flatassembler.net
 [so-answer-rcx]: https://stackoverflow.com/a/50571366
+[win32-api-index]: https://docs.microsoft.com/en-us/windows/win32/apiindex/windows-api-list
+[win-internal]: https://docs.microsoft.com/en-us/sysinternals/resources/windows-internals
