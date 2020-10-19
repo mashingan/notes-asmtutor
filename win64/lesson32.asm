@@ -40,9 +40,9 @@ end virtual
 .code
 main:
     fastcall setStdout
-    enter   sizeof.WSADATA+socksize+sizeof.sockaddr_in, 0
+    enter   totalalloc+8, 0
     and     rsp, -16    ; make it 16-bite aligned
-    mov     rcx, sizeof.WSADATA+2*socksize+sizeof.sockaddr_in+8
+    mov     rcx, totalalloc+8
     fastcall iprintLF
     xor     rbx, rbx
     mov     bl, 2   ; major version

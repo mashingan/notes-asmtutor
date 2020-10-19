@@ -57,6 +57,18 @@ proc snprintW msgaddr, len
     ret
 endp
 
+proc snprintLF
+    fastcall snprint
+    mov     al, 0ah
+    mov     ah, 0dh
+    push    ax
+    mov     rcx, rsp
+    mov     rdx, 2
+    fastcall snprint
+    pop     ax
+    ret
+endp
+
 proc sprintLF
     fastcall sprint
     mov     al, 0ah
