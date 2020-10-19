@@ -111,7 +111,7 @@ available [Windows API][win32-api-index].
 32. Lesson 32: Accepting socket.
 33. Lesson 33: Reading socket.
 34. Lesson 34: Writing socket, responding HTTP.
-35. Lesson 35: Closing the socket.
+35. Lesson 35: Closing the socket. Win64 version already available since lesson 32.
 36. Lesson 36: Fetching HTML page.
 
 [asmtutor]: https://asmtutor.com
