@@ -1,5 +1,3 @@
-;; hit with
-;; curl localhost:9001
 format PE64 console
 
 include 'win64wx.inc'
@@ -14,6 +12,7 @@ closes  db  'closing socket', 0h
 buflen = 4096
 buffer  rb  buflen
 
+iptgt   db  '139.162.39.66', 0h
 request db 'GET / HTTP/1.1', 0dh, 0ah, 'Host: 139.162.39.66:80'
 
 rept 2 {
@@ -36,6 +35,8 @@ MSG_WAITALL = 0x40
 SD_RECEIVE = 0
 SD_SEND = 1
 SD_BOTH = 2
+
+INADDR_NONE = 0xFFFFFFFF
 
 virtual at rbp-sizeof.WSADATA
     wsaptr  dq  ?
@@ -74,7 +75,12 @@ main:
     lea     r13, [saptr]
     mov     word [r13+sockaddr_in.sin_family], 2
     mov     word [r13+sockaddr_in.sin_port], 0x5000
-    mov     dword [r13+sockaddr_in.sin_addr], 0x4227a28b
+    mov     r12, iptgt
+    invoke  inet_addr, r12
+    cmp     eax, INADDR_NONE
+    je      .err
+    mov     dword [r13+sockaddr_in.sin_addr], eax
+    mov     rax, [r14]
     invoke  connect, rax, r13, sizeof.sockaddr_in
     cmp     rax, 0
     jne     .err
