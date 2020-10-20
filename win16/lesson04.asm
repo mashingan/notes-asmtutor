@@ -21,11 +21,11 @@ start:
 ; repnz scabs will dec cx until it found so we put the cx as (unsigned) -1
 strlen:
     push    cx di
-    mov     cx, 0xff
+    mov     cx, 0xffff
     mov     di, dx
     mov     al, 0
     repnz   scasb
-    mov     ax, 0xff
+    mov     ax, 0xffff
     sub     ax, cx
     pop     di cx
     ret
