@@ -56,6 +56,24 @@ optional settings:
 If we have the output as shown above, we can use `fasm.exe` as simple as
 Linux example above.
 
+---
+### Win16
+When compiling to Win16 COM object file, do the installation like Win64
+example above.  
+As Windows 64-bit cannot run COM object file anymore, we can install
+[Dosbox][dosbox], Freedos [Virtualbox][freedos-vm] or [other][freedos-other],
+or simply wrap our COM object with [winedvm/otvdm][otvdm-github] for
+example `otvdm.exe lesson01.com`.
+Add the folder where `otvdm.exe` to the `PATH` like we did for Win64.
+
+After that it's as simple as
+
+```
+> fasm lesson01.asm
+> otvdm lesson01.com
+Hello world!
+```
+
 ## Lesson Architecture
 
 The original lessons are giving example using `int 80h` for Linux32 but
@@ -75,10 +93,17 @@ freely. There's some book which explains the internals, [Windows Internal Books]
 but as mentioned before, it's not available for free. Hence we use the
 available [Windows API][win32-api-index].
 
+----
+### Win16
+In Windows 16, the COM object immediately calls the interrupts.
+The list of kernel interrupts can be found at [Ralf Brown's Interrupt List][rbil]
+for the local reference or [The Html version][rbil-html] to avoid downloading
+the lists.
+
 ## Lessons' content
 
 1. Lesson 01: Printing the constant string to the stdout.
-2. Lesson 02: Adding the proper exit from Lesson 01.
+2. Lesson 02: Adding the proper exit from Lesson 01. Win16 already available since lesson 01.
 3. Lesson 03: Calculating the length of message during runtime.
 4. Lesson 04: Introducing subroutine.
 5. Lesson 05: Including external file.
@@ -119,3 +144,9 @@ available [Windows API][win32-api-index].
 [so-answer-rcx]: https://stackoverflow.com/a/50571366
 [win32-api-index]: https://docs.microsoft.com/en-us/windows/win32/apiindex/windows-api-list
 [win-internal]: https://docs.microsoft.com/en-us/sysinternals/resources/windows-internals
+[dosbox]: [https://www.dosbox.com]
+[freedos-vm]: [http://wiki.freedos.org/wiki/index.php/VirtualBox]
+[freedos-other]: [https://www.osboxes.org/freedos/]
+[otvdm-github]: [https://github.com/otya128/winevdm]
+[rbil]: [https://www.cs.cmu.edu/~ralf/files.html]
+[rbil-html]: [http://www.ctyme.com/rbrown.htm]
