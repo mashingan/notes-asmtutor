@@ -19,29 +19,31 @@ strlen:
     repnz   scasb
     mov     ax, 0xff
     sub     ax, cx
+    dec     ax
     pop     di cx
     ret
 
 ; need the string pointer in dx
 ; di as count
 snprint:
-    push    ax bx
+    push    ax bx cx
     mov     bx, dx
-    add     bx, di
-    mov     byte [bx], '$'
-    mov     ah, 9
+    mov     cx, di
+    mov     ah, 2
+@@:
+    mov     dl, byte [bx]
+    inc     bx
     int     21h
-    pop     bx ax
+    loopw   @b
+    pop     cx bx ax
     ret
 
 sprint:
     push    ax di
     mov     di, dx
     call    strlen
-    add     di, ax
-    mov     byte [di], '$'
-    mov     ah, 9
-    int     21h
+    mov     di, ax
+    call    snprint
     pop     di ax
     ret
     
