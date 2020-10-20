@@ -46,6 +46,15 @@ sprint:
     call    snprint
     pop     di ax
     ret
+
+sprintCRLF:
+    push    bx
+    mov     bx, dx
+    call    sprint
+    mov     dx, bx
+    call    CRLF
+    pop     bx
+    ret
     
 ;true = 1
 ;false = 0
