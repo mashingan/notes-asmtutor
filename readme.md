@@ -105,6 +105,15 @@ lesson 18 which dividing the FizzBuzz. Since Win16 Dos doesn't support the
 pre-emptive multitasking, creating thread and/or spawning the new process very
 likely it can't be done, if not impossible. Hence this will not adapted further.
 
+
+----
+### Win32
+Where Win32 adaptation? The Win32 adaptation won't be much different than
+the Win64 adaptation and even the [Win32 index list][win32-api-index] APIs are
+actually for Win32. Since the APIs won't be different that Win64, this
+version adaptation is skipped.
+
+
 ## Lessons' content
 
 1. Lesson 01: Printing the constant string to the stdout.
