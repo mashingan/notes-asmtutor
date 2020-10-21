@@ -100,6 +100,11 @@ The list of kernel interrupts can be found at [Ralf Brown's Interrupt List][rbil
 for the local reference or [The Html version][rbil-html] to avoid downloading
 the lists.
 
+There are several lessons missing for Win16 and the latest implemented only to
+lesson 18 which dividing the FizzBuzz. Since Win16 Dos doesn't support the
+pre-emptive multitasking, creating thread and/or spawning the new process very
+likely it can't be done, if not impossible. Hence this will not adapted further.
+
 ## Lessons' content
 
 1. Lesson 01: Printing the constant string to the stdout.
