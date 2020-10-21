@@ -72,7 +72,7 @@ sprintCRLF:
 iprint:
     push    ax bx cx
     mov     ax, dx
-    xor     cx, 0
+    xor     cx, cx
     cmp     ax, 0
     jge     @f
     push    ax
