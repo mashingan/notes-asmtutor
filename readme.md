@@ -149,9 +149,9 @@ likely it can't be done, if not impossible. Hence this will not adapted further.
 [so-answer-rcx]: https://stackoverflow.com/a/50571366
 [win32-api-index]: https://docs.microsoft.com/en-us/windows/win32/apiindex/windows-api-list
 [win-internal]: https://docs.microsoft.com/en-us/sysinternals/resources/windows-internals
-[dosbox]: [https://www.dosbox.com]
-[freedos-vm]: [http://wiki.freedos.org/wiki/index.php/VirtualBox]
-[freedos-other]: [https://www.osboxes.org/freedos/]
-[otvdm-github]: [https://github.com/otya128/winevdm]
-[rbil]: [https://www.cs.cmu.edu/~ralf/files.html]
-[rbil-html]: [http://www.ctyme.com/rbrown.htm]
+[dosbox]: https://www.dosbox.com
+[freedos-vm]: http://wiki.freedos.org/wiki/index.php/VirtualBox
+[freedos-other]: https://www.osboxes.org/freedos/
+[otvdm-github]: https://github.com/otya128/winevdm
+[rbil]: https://www.cs.cmu.edu/~ralf/files.html
+[rbil-html]: http://www.ctyme.com/rbrown.htm
