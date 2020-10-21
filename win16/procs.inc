@@ -26,25 +26,35 @@ strlen:
 ; need the string pointer in dx
 ; di as count
 snprint:
+    ;; older implementation
+    ;push    ax bx cx
+    ;mov     bx, dx
+    ;mov     cx, di
+    ;mov     ah, 2
+;@@:
+    ;mov     dl, byte [bx]
+    ;inc     bx
+    ;int     21h
+    ;loopw   @b
+    ;pop     cx bx ax
+    ;ret
     push    ax bx cx
-    mov     bx, dx
     mov     cx, di
-    mov     ah, 2
-@@:
-    mov     dl, byte [bx]
-    inc     bx
+    mov     di, dx
+    mov     ah, 40h
+    mov     bx, 1
     int     21h
-    loopw   @b
     pop     cx bx ax
     ret
 
 sprint:
-    push    ax di
-    mov     di, dx
+    push    ax bx di
+    mov     bx, dx
     call    strlen
     mov     di, ax
+    mov     dx, bx
     call    snprint
-    pop     di ax
+    pop     di bx ax
     ret
 
 sprintCRLF:
