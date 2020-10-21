@@ -1,14 +1,19 @@
 org 256
 
+virtual at bp-sinsize
+    inputPtr dw ?
+end virtual
+
 start:
+    enter   sinsize, 0
+    and     sp, -16
     xor     cx, cx
     xor     ax, ax
-    mov     bx, sinput
+    lea     bx, [inputPtr]
     mov     dx, prompt
     call    sprint
 input:
-    ;mov	    ah, 08h	; no echo keyboard
-    mov     ah, 01h	; take a character from keyboard
+    mov     ah, 01h
     int	    21h
     inc	    cx
     mov	    dh, al
@@ -16,7 +21,7 @@ input:
     je	    .printTxt
     mov	    [bx], dh
     inc	    bx
-    cmp	    cx, txtlen
+    cmp	    cx, sinsize
     jb	    input
 
 .printTxt:
@@ -24,8 +29,9 @@ input:
     mov     dx, hello
     call    sprint
     mov     di, cx
-    mov     dx, sinput
-    call    sprintCRLF
+    lea     dx, [inputPtr]
+    call    snprint
+    leave
     int     20h
 
 include 'procs.inc'
@@ -33,5 +39,3 @@ prompt  db  'Please enter your name: ', 0h
 hello   db  'Hello, ', 0h
 
 sinsize = 255
-sinput db sinsize dup (0)
-txtlen = $ - sinput
