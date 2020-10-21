@@ -10,7 +10,6 @@ failc   db  'failed code: ', 0h
 failw   db  'failed sending request', 0h
 closes  db  'closing socket', 0h
 buflen = 4096
-buffer  rb  buflen
 
 iptgt   db  '139.162.39.66', 0h
 request db 'GET / HTTP/1.1', 0dh, 0ah, 'Host: 139.162.39.66:80'
@@ -51,12 +50,17 @@ virtual at rbp-totalalloc
     saptr dq ?
 end virtual
 
+totalallocbuflen = totalalloc + buflen
+virtual at rbp-totalallocbuflen
+    buffer dq ?
+end virtual
+
 .code
 main:
     fastcall setStdout
-    enter   totalalloc, 0
+    enter   totalallocbuflen, 0
     and     rsp, -16    ; make it 16-bite aligned
-    mov     rcx, totalalloc
+    mov     rcx, totalallocbuflen
     fastcall iprintLF
     xor     rbx, rbx
     mov     bl, 2   ; major version
@@ -94,11 +98,11 @@ main:
     fastcall sprintLF
     jmp .err
 .read:
-    ;invoke  recv, rdi, buffer, buflen, MSG_PEEK
-    invoke  recv, rdi, buffer, buflen, 0 ; recv until peer closes conn
+    lea     rsi, [buffer]
+    invoke  recv, rdi, rsi, buflen, 0 ; recv until peer closes conn
     cmp     rax, 0
     jle     .close
-    mov     rcx, buffer
+    mov     rcx, rsi
     mov     rdx, rax
     fastcall snprintLF
     jmp     .read
