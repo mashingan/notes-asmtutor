@@ -66,8 +66,6 @@ sprintCRLF:
     pop     bx
     ret
     
-;true = 1
-;false = 0
 ;; taking the single arg in dx
 iprint:
     push    ax bx cx
@@ -105,4 +103,48 @@ iprintCRLF:
     call    iprint
     call    CRLF
     pop     cx bx ax
+    ret
+
+false = 0
+true = 1
+atoi:
+    push    bx cx di si
+    mov     si, dx
+    xor     ax, ax
+    xor     bx, bx
+    xor     cx, cx
+    xor     dx, dx
+    xor     di, di
+    mov     di, 10
+    mov     dl, false
+    cmp     byte [si], '-'
+    jne     @f
+    mov     dl, true
+    inc     si
+    neg     ax
+@@:
+    push    dx
+@@:
+    xor     dx, dx
+    mov     dl, byte [si+bx]
+    cmp     dl, '0'
+    jl      @f
+    cmp     dl, '9'
+    jg      @f
+    inc     bx
+    sub     dl, '0'
+    add     ax, dx
+    mul     di
+    jmp     @b
+@@:
+    cmp     bx, 0
+    je      @f
+    div     di
+@@:
+    pop     dx
+    cmp     dx, true
+    jne     @f
+    neg     ax
+@@:
+    pop     si di cx bx
     ret
